@@ -182,25 +182,6 @@
     </script>
 
 
-<script>
-    const searchForm = document.getElementById('searchForm');
-    const searchBox = document.getElementById('search-box');
-
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 防止表單提交
-        const keyword = searchBox.value.trim();
-
-        if (keyword !== '') {
-            searchBox.classList.add('keyword-found');
-        } else {
-            searchBox.classList.remove('keyword-found');
-        }
-
-        // 在這裡你可以繼續處理搜尋邏輯，比如將關鍵字發送到伺服器
-        console.log('搜尋關鍵字：', keyword);
-    });
-</script>
-
             <h2>🔥熱賣商品🔥</h2>
 
             <div class="product">
