@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #search-box.keyword-found {
+            color: red;
+        }
+    </style>
+    <title>店名</title>
+    <style>
+        body {
+            font-family: 'Broadway', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #496D4D;
+        }
+
+        header {
+            background-color: #FFFFFF;
+            color: #496D4D;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #496D4D;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #80B2AD;
+            font-family: '圓體', sans-serif;
+            color: #fff;
+        }
+
+        #banner {
+            width: 100%;
+            height: 500px; /* 調整圖片框高度 */
+            overflow: hidden;
+            position: relative;
+        }
+
+        #banner img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section img {
+            width: 500px; 
+            max-height:200px;
+        }
+
+        .product-list {
+            flex: 0 0 60%; /* 60% width, not flexible */
+            max-width: 60%; /* added for responsiveness */
+        }
+
+        h2 {
+            color: #496D4D;
+        }
+
+        .product {
+            display: flex;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+       .product img {
+           max-width: 150px; /* 調整圖片最大寬度 */
+           width: auto; /* 使寬度自動根據比例調整 */
+           height: auto; /* 使高度自動根據比例調整 */
+           margin-right: 20px; /* 調整圖片和文字之間的距離 */
+        }
+
+
+        #search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #search-box {
+            width: 200px;
+            padding: 2px;
+        }
+        
+
+       .shopping-cart img {
+            max-width: 100%; /* 調整圖片最大寬度為其容器的100% */
+            width: 50; /* 使寬度自動根據比例調整 */
+            height: auto; /* 使高度自動根據比例調整 */
+            display: block; /* 避免行內元素下方可能產生的間隙 */
+            border-radius: 5px; /* 圓角效果 */
+        }
+
+        /* 在現有的 CSS 中添加以下代碼 */
+       .cart-item {
+            border: 1px solid #ccc; /* 添加1像素寬的灰色邊框 */
+            padding: 10px; /* 添加內邊距 */
+            margin-bottom: 10px; /* 添加底部外邊距，以分隔不同的購物車項目 */
+        }
+
+       .cart-item img {
+            max-width: 100%; /* 調整圖片最大寬度為其容器的100% */
+            width: auto; /* 使寬度自動根據比例調整 */
+            height: auto; /* 使高度自動根據比例調整 */
+            display: block; /* 避免行內元素下方可能產生的間隙 */
+            border-radius: 5px; /* 圓角效果 */
+        }
+
+
+    </style>
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="images/抹茶LOGO.jpg" width="200" height="200">
+        <h1>茶韻時光</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">首頁</a>
+        <a href="connection.html">聯絡方式</a>
+        <a href="aboutus.html">關於我們</a>
+        <a href="dessert.html">▼點心・ᴥ・▼</a>
+        <a href="cooperationproducts.html">▼合作產品¯•ω•¯▼</a>
+        <a href="evaluate.html">客戶評價及反饋</a>
+        <a href="new.html">最新消息</a>
+    </nav>
+
+    <div id="banner">
+        <img src="images/cheese.jpg" alt="Banner Image">
+        <img src="images/cookie.jpg" alt="Banner Image">
+        <img src="images/Donut.jpg" alt="Banner Image">
+        <img src="images/Donut1.jpg" alt="Banner Image">
+        <img src="images/icecream.jpg" alt="Banner Image">
+        <img src="images/matcha chocolate.jpg" alt="Banner Image">
+        <img src="images/茶粉.jpg.jpg" alt="Banner Image">
+        <img src="images/茶具.jpg" alt="Banner Image">
+    </div>
+    <script>
+        // 獲取所有輪播圖片
+        const banner = document.getElementById('banner');
+        const images = banner.getElementsByTagName('img');
+
+        const interval = 3000; // 3 秒
+
+        // 函數：顯示下一張輪播圖片
+        function showNextImage() {
+            images[currentIndex].style.display = 'none'; // 隱藏當前圖片
+            currentIndex = (currentIndex + 1) % images.length; // 更新索引
+            images[currentIndex].style.display = 'block'; // 顯示下一張圖片
+        }
+
+        // 使用定時器觸發輪播
+        setInterval(showNextImage, interval);
+    </script>
+
+
+<script>
+    const searchForm = document.getElementById('searchForm');
+    const searchBox = document.getElementById('search-box');
+
+    searchForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // 防止表單提交
+        const keyword = searchBox.value.trim();
+
+        if (keyword !== '') {
+            searchBox.classList.add('keyword-found');
+        } else {
+            searchBox.classList.remove('keyword-found');
+        }
+
+        // 在這裡你可以繼續處理搜尋邏輯，比如將關鍵字發送到伺服器
+        console.log('搜尋關鍵字：', keyword);
+    });
+</script>
+
+            <h2>🔥熱賣商品🔥</h2>
+
+            <div class="product">
+                <img src="images/有在擂.jpg" alt="有在擂" width="300" >
+                <div>
+                    <h3>有在擂</h3>
+                    <p>「有在擂」，主要材料為：茶葉、黑芝麻、白芝麻、花生、茶粉以及本店自製魔法茶粉。口味變化較豐富，且同時滿足嗅覺、味覺的享受，無論是嬰幼兒和牙齒不好的長輩皆可飲用，是相當受歡迎的品項。</p>
+                    <p>價格：NT$900</p>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/茶粉.jpg" alt="魔法茶粉">
+                <div>
+                    <h3>魔法茶粉</h3>
+                    <p>擂好的茶，彷彿帶有海苔與穀物香氣的抹茶，因這份雷同而讓我們產生，如果真的把他們做結合會如何呢?「粉」是一項精選優質的茶粉，來自抹茶茶葉中最嫩、最優雅的一絲翠綠。不僅保留了抹茶的經典風味，更包留擂茶主料芝麻、花生元素，是一種獨特的茶粉饗宴，為喜愛抹茶及擂茶的你帶來無限的品味享受。</p>
+                    <p>價格：NT$650</p>
+                </div>
+            </div>
+        </div>
+            <p>線上購物車請往下滑🔽🔽🔽🔽</p>
+            <br>
+            <br>
+
+
+<div class="shopping-cart">
+    <h2>購物車</h2>
+
+    <!-- Product 1 -->
+    <div class="cart-item">
+        <input type="checkbox" id="product1" name="products[]" value="product1">
+        <label for="product1">
+            <img src="images/matcha chocolate.jpg" alt="Product 1">
+            抹茶巧克力 - NT
+        </label>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="cart-item">
+        <input type="checkbox" id="product2" name="products[]" value="product2">
+        <label for="product2">
+            <img src="images/Donut.jpg" alt="Product 2">
+            抹茶粉甜甜圈 - NT
+        </label>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="cart-item">
+        <input type="checkbox" id="product3" name="products[]" value="product3">
+        <label for="product3">
+            <img src="images/Donut1.jpg" alt="Product 3">
+            抹茶甜甜圈 - NT
+        </label>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="cart-item">
+        <input type="checkbox" id="product4" name="products[]" value="product4">
+        <label for="product4">
+            <img src="images/cookie.jpg" alt="Product 4">
+            抹茶餅乾 - NT
+        </label>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="cart-item">
+        <input type="checkbox" id="product5" name="products[]" value="product5">
+        <label for="product5">
+            <img src="images/popsicle.jpg" alt="Product 5">
+            抹茶餅乾 - NT
+        </label>
+    </div>
+
+    <!-- Add more products as needed -->
+
+    <div>
+        <label for="payment-method">選擇付款方式:</label>
+        <select id="payment-method" name="payment-method">
+            <option value="credit-card">信用卡</option>
+            <option value="paypal">PayPal</option>
+            <option value="credit-card">超商繳款</option>
+            <option value="credit-card">宅配貨到付款</option>
+            <option value="credit-card">ezPay</option>
+            <option value="credit-card">LINE Pay</option>
+            <!-- Add more payment methods as needed -->
+        </select>
+    </div>
+
+    <!-- Add more products as needed -->
+
+    <!-- Submit button -->
+    <div>
+        <button type="button" onclick="showConfirmation()">結帳</button>
+    </div>
+</div>
+
+<!-- Confirmation Popup -->
+<div id="confirmation-popup" class="confirmation-popup">
+    <h2>確認購物車清單</h2>
+    <div class="cart-summary">
+        <!-- Cart items and total will be displayed here -->
+    </div>
+    <p>總金額: <span id="total-amount"></span></p>
+    <button onclick="thankYou()">確認</button>
+</div>
+
+<script>
+    function showConfirmation() {
+        // Gather selected products
+        const selectedProducts = document.querySelectorAll('input[name="products[]"]:checked');
+        const cartSummary = document.querySelector('.cart-summary');
+        const totalAmountSpan = document.getElementById('total-amount');
+        let totalAmount = 0;
+
+        // Clear previous content
+        cartSummary.innerHTML = '';
+
+        // Populate cart summary
+        selectedProducts.forEach(product => {
+            const productInfo = product.labels[0].innerText.split(' - ');
+            const productName = productInfo[0];
+            const productPrice = parseFloat(productInfo[1]);
+            totalAmount += productPrice;
+
+            const cartItem = document.createElement('div');
+            cartItem.innerHTML = `<img src="${product.previousElementSibling.src}" alt="${productName}">${productName} - 價格${productPrice}`;
+            cartSummary.appendChild(cartItem);
+        });
+
+        // Display total amount
+        totalAmountSpan.textContent = totalAmount.toFixed(2);
+
+        // Show the confirmation popup
+        document.getElementById('confirmation-popup').style.display = 'block';
+    }
+
+    function thankYou() {
+        // Hide the confirmation popup and show a thank you message (you can customize this part)
+        document.getElementById('confirmation-popup').style.display = 'none';
+        alert('感謝您的購買！');
+    }
+</script>
+
+</body>
+</html>
