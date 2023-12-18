@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店名</title>
+    <style>
+        body {
+            font-family: 'Broadway', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #496D4D;
+        }
+
+        header {
+            background-color: #FFFFFF;
+            color: #496D4D;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #496D4D;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #80B2AD;
+            font-family: '圓體', sans-serif;
+            color: #fff;
+        }
+
+        #banner {
+            width: 100%;
+            height: 500px; /* 調整圖片框高度 */
+            overflow: hidden;
+            position: relative;
+        }
+
+        #banner img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section img {
+            width: 500px; 
+            max-height:200px;
+        }
+
+        .product-list {
+            flex: 0 0 60%; /* 60% width, not flexible */
+            max-width: 60%; /* added for responsiveness */
+        }
+
+        h2 {
+            color: #496D4D;
+        }
+
+        .product {
+            display: flex;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            max-width: 100px; /* 調整圖片最大寬度 */
+            margin-right: 20px; /* 調整圖片和文字之間的距離 */
+        }
+
+        #search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #search-box {
+            width: 200px;
+            padding: 2px;
+        }
+
+        .shopping-cart {
+            flex: 0 0 40%; /* 40% width, not flexible */
+            max-width: 40%; /* added for responsiveness */
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="images/抹茶LOGO.jpg" width="200" height="200">
+        <h1>LOGO</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">首頁</a>
+        <a href="connection.html">聯絡方式</a>
+        <a href="aboutus.html">關於我們</a>
+        <a href="dessert.html">▼點心・ᴥ・▼</a>
+        <a href="cooperationproducts.html">▼合作產品¯•ω•¯▼</a>
+        <a href="evaluate.html">客戶評價及反饋</a>
+        <a href="new.html">最新消息</a>
+    </nav>
+
+    <header>
+        <h1>包裝介紹網站</h1>
+    </header>
+
+    <section>
+        <h2>產品特色</h2>
+        <p>在這裡介紹您包裝的特點和優勢。</p>
+    </section>
+
+    <section>
+        <h2>產品展示</h2>
+        <p>展示您的包裝產品，可以使用圖片和描述。</p>
+    </section>
+
+    <section>
+        <h2>客戶評價</h2>
+        <p>加入一些客戶的評價和反饋，以建立信任。</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 包裝介紹網站. All rights reserved.</p>
+    </footer>
+</body>
+</html>
